@@ -1,3 +1,9 @@
+# Ignore customized config
+config.json
+
+# Dev env ignores
+.idea
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
