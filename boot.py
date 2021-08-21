@@ -30,15 +30,18 @@ last_message = 0
 message_interval = 30
 counter = 0
 
-station = network.WLAN(network.STA_IF)
+sta_if = network.WLAN(network.STA_IF)
+ap_if = network.WLAN(network.AP_IF)
 
-station.active(True)
-station.connect(ssid, password)
+sta_if.active(True)
+sta_if.connect(ssid, password)
 
 print('Connecting to ssid %s' % ssid)
-while station.isconnected() == False:
+while sta_if.isconnected() == False:
     pass
 
+ap_if.active(False)
+
 print('Connection successful')
-print(station.ifconfig())
+print(sta_if.ifconfig())
 print('My mac address: %s' % mac)
