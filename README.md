@@ -16,3 +16,6 @@ Since I have not yet managed to get this running in PyCharm, I
 1) Open all four files (`boot.py`, `umqttsimple.py`, `main.py` and `config.json`) in uPyCraft
 1) Hit DownloadAndRun for all the open files
 1) DownloadAndRun `boot.py` and it should connect to the WiFi and show you the MAC address
+
+## Wiring
+![alt text](https://github.com/oxivanisher/d1pymqttanalog/blob/master/wiring.jpg?raw=true)
