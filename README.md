@@ -26,4 +26,4 @@ To upload the files to the esp, use [Thonny](https://thonny.org). It is availabl
 2) Upload `boot.py`, `umqttsimple.py`, `main.py` and `config.json` with thonny
 
 ## Wiring
-![alt text](https://github.com/oxivanisher/d1pymqttanalog/raw/main/wiring.jpg)
+![alt text](wiring.jpg)
