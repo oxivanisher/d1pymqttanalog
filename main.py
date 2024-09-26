@@ -22,26 +22,34 @@ def connect_and_subscribe():
 
 
 def restart_and_reconnect():
+    led.value(0)
     print('Failed to connect to MQTT broker. Reconnecting...')
     time.sleep(10)
-    machine.reset()
+    reset()
 
 
-analog_pin = machine.ADC(0)
+analog_pin = ADC(0)
 
 try:
     client = connect_and_subscribe()
 except OSError as e:
     restart_and_reconnect()
 
+led.value(1)
+print('Starting main loop')
 while True:
     try:
         client.check_msg()
         if (time.time() - last_message) > message_interval:
+            led.value(0)
             analog_value = analog_pin.read()
             print('Read the following value: %s' % analog_value)
             client.publish(topic_pub, b'%s' % analog_value)
             last_message = time.time()
             counter += 1
+            led.value(1)
+            
     except OSError as e:
         restart_and_reconnect()
+
+    time.sleep_ms(loop_sleep_ms)

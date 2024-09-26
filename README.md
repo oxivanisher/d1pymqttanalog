@@ -1,13 +1,12 @@
 # d1pymqttanalog
 MicroPython based program for sending analog values to mqtt
 
-# Resources
-The MQTT lib (umqttsimple.py) is taken from: https://raw.githubusercontent.com/RuiSantosdotme/ESP-MicroPython/master/code/MQTT/umqttsimple.py
+## Problems / ToDo
+### Optimize Wifi connection
+Since the wifi connection is done in `boot.py`, thonny is unable to communicate with the device if no wifi connection can be established, once the code is uploaded. This should be improved!
 
-## Setup dev env
-* https://randomnerdtutorials.com/micropython-esp32-esp8266-vs-code-pymakr/
-* https://randomnerdtutorials.com/install-upycraft-ide-windows-pc-instructions/
-* https://randomnerdtutorials.com/micropython-mqtt-esp32-esp8266/
+## Resources
+The MQTT lib (umqttsimple.py) is taken from: https://raw.githubusercontent.com/RuiSantosdotme/ESP-MicroPython/master/code/MQTT/umqttsimple.py
 
 ## How I upload the stuff using Linux (maybe this also works with WSL2)
 ### Setup esptool
