@@ -25,13 +25,17 @@ password = c['password']
 mqtt_server = c['mqtt_server']
 mqtt_user = c['mqtt_user']
 mqtt_password = c['mqtt_password']
+mqtt_root_topic = c['mqtt_root_topic']
+
+print('MQTT root topic: %s/' % mqtt_root_topic)
 
 mac = ubinascii.hexlify(network.WLAN().config('mac'), ':').decode()
 print('My mac address: %s' % mac)
 
 client_id = ubinascii.hexlify(unique_id())
-topic_sub = b'd1moist/ping'
-topic_pub = b'd1moist/values/%s' % mac
+topic_sub = b'%s/ping' % mqtt_root_topic
+topic_pub = b'%s/values/%s' % (mqtt_root_topic, mac)
+topic_status = b'%s/status/%s' % (mqtt_root_topic, mac)
 
 last_message = 0
 message_interval = 30
@@ -40,16 +44,3 @@ counter = 0
 
 sta_if = network.WLAN(network.STA_IF)
 ap_if = network.WLAN(network.AP_IF)
-
-sta_if.active(True)
-sta_if.connect(ssid, password)
-
-print('Connecting to ssid %s' % ssid)
-while sta_if.isconnected() == False:
-    pass
-
-ap_if.active(False)
-
-print('Connection successful')
-print(sta_if.ifconfig())
-print('My mac address: %s' % mac)

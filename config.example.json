@@ -3,5 +3,6 @@
   "password": "",
   "mqtt_server": "",
   "mqtt_user": "",
-  "mqtt_password": ""
+  "mqtt_password": "",
+  "mqtt_root_topic": "d1pymqttanalog"
 }

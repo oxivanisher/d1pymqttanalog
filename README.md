@@ -1,10 +1,6 @@
 # d1pymqttanalog
 MicroPython based program for sending analog values to mqtt
 
-## Problems / ToDo
-### Optimize Wifi connection
-Since the wifi connection is done in `boot.py`, thonny is unable to communicate with the device if no wifi connection can be established, once the code is uploaded. This should be improved!
-
 ## Resources
 The MQTT lib (umqttsimple.py) is taken from: https://raw.githubusercontent.com/RuiSantosdotme/ESP-MicroPython/master/code/MQTT/umqttsimple.py
 
@@ -22,8 +18,17 @@ The MQTT lib (umqttsimple.py) is taken from: https://raw.githubusercontent.com/R
 ### Thonny
 To upload the files to the esp, use [Thonny](https://thonny.org). It is available for all platforms and supports micro- and circuitpython.
 
-1) Create a `config.json`
+1) Create a `config.json` from `config.example.json`
 2) Upload `boot.py`, `umqttsimple.py`, `main.py` and `config.json` with thonny
 
 ## Wiring
 ![alt text](wiring.jpg)
+
+## MQTT topics
+The root topic is configured in `config.json`. The following examples use the example topic `d1pymqttanalog`.
+### `d1pymqttanalog/ping`
+If you send the message `ping` to this topic, all clients listening on the same root topic will answer with `pong`.
+### `d1pymqttanalog/status/<MACADDRESS>`
+The device will send `online` to this topic after successful connection and the last will message is set to `offline` on this topic.
+### `d1pymqttanalog/values/<MACADDRESS>`
+The device will send the raw value from the analog pin to this topic.
